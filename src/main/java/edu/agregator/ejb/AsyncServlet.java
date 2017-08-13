@@ -1,5 +1,7 @@
 package edu.agregator.ejb;
 
+import static edu.agregator.ejb.EJBConstant.BEAN_NAME;
+
 import us.codecraft.webmagic.Spider;
 
 import javax.ejb.EJB;
@@ -14,7 +16,8 @@ import java.util.concurrent.Future;
 
 @WebServlet(name = "AsyncServlet", urlPatterns = {"/asyncServlet"})
 public class AsyncServlet extends HttpServlet {
-    @EJB
+    
+	@EJB(name=BEAN_NAME)
     private AsyncEJB bean;
 
     @Override
