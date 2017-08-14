@@ -1,5 +1,6 @@
 package edu.agregator.ejb;
 
+import static edu.agregator.ejb.EJBConstant.BEAN_NAME;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Spider;
@@ -14,7 +15,7 @@ import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 
-@Stateless
+@Stateless(name=BEAN_NAME)
 @LocalBean
 public class AsyncEJB {
     public DataSource dataS=new DataSource();
