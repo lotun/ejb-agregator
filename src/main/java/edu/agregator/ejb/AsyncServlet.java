@@ -1,6 +1,6 @@
 package edu.agregator.ejb;
 
-import static edu.agregator.ejb.EJBConstant.BEAN_NAME;//имя
+import static edu.agregator.ejb.EJBConstant.BEAN_NAME;//имя//
 
 import us.codecraft.webmagic.Spider;
 
