@@ -1,6 +1,6 @@
 package edu.agregator.ejb;
 
-import static edu.agregator.ejb.EJBConstant.BEAN_NAME;
+import static edu.agregator.ejb.EJBConstant.BEAN_NAME;//имя
 
 import us.codecraft.webmagic.Spider;
 
@@ -16,8 +16,7 @@ import java.util.concurrent.Future;
 
 @WebServlet(name = "AsyncServlet", urlPatterns = {"/asyncServlet"})
 public class AsyncServlet extends HttpServlet {
-    
-	@EJB(name=BEAN_NAME)
+    @EJB(name=BEAN_NAME)//имя
     private AsyncEJB bean;
 
     @Override
@@ -25,7 +24,7 @@ public class AsyncServlet extends HttpServlet {
             throws ServletException, IOException {
         resp.setContentType( "text/html;charset=windows-1251" );
         PrintWriter out = resp.getWriter();
-        out.print("<h1>Анализ данных с сайтов citilink и jast</h1>");
+        out.print("<h1>Анализ данных с сайтов citilink и just</h1>");
         AsyncEJB AnalisServlet = new AsyncEJB();
         //bean.sayHello();
         AnalisServlet.sayHello();
@@ -43,8 +42,8 @@ public class AsyncServlet extends HttpServlet {
         out.print(AnalisServlet.dataS.name.get(AnalisServlet.minPriceSSD("citi")));
         out.print("<br>Цена<br>");
         out.print(AnalisServlet.dataS.price.get(AnalisServlet.minPriceSSD("citi")));
-        out.print("<br>Описание<br>");
-        out.print(AnalisServlet.dataS.disc.get(AnalisServlet.minPriceSSD("citi")));
+        //out.print("<br>Описание<br>");
+        //out.print(AnalisServlet.dataS.disc.get(AnalisServlet.minPriceSSD("citi")));
         out.print("<br>");
 //        out.print(AnalisServlet.minPriceSSD("citi"));
 //        out.print("<br>");
@@ -63,8 +62,8 @@ public class AsyncServlet extends HttpServlet {
         out.print(AnalisServlet.dataJ.name.get(AnalisServlet.minPriceSSD("jast")));
         out.print("<br>Цена<br>");
         out.print(AnalisServlet.dataJ.price.get(AnalisServlet.minPriceSSD("jast")));
-        out.print("<br>Описание<br>");
-        out.print(AnalisServlet.dataJ.disc.get(AnalisServlet.minPriceSSD("jast")));
+        //out.print("<br>Описание<br>");
+        //out.print(AnalisServlet.dataJ.disc.get(AnalisServlet.minPriceSSD("jast")));
         out.print("<br>");
         //максимальное
         out.print("<hr>Максимальная цена цена на SSD<br>");
@@ -72,16 +71,16 @@ public class AsyncServlet extends HttpServlet {
         out.print(AnalisServlet.dataS.name.get(AnalisServlet.maxPriceSSD("citi")));
         out.print("<br>Цена<br>");
         out.print(AnalisServlet.dataS.price.get(AnalisServlet.maxPriceSSD("citi")));
-        out.print("<br>Описание<br>");
-        out.print(AnalisServlet.dataS.disc.get(AnalisServlet.maxPriceSSD("citi")));
+        //out.print("<br>Описание<br>");
+        //out.print(AnalisServlet.dataS.disc.get(AnalisServlet.maxPriceSSD("citi")));
         out.print("<br>");
 
         out.print("<br>В джаст<br>");
         out.print(AnalisServlet.dataJ.name.get(AnalisServlet.maxPriceSSD("jast")));
         out.print("<br>Цена<br>");
         out.print(AnalisServlet.dataJ.price.get(AnalisServlet.maxPriceSSD("jast")));
-        out.print("<br>Описание<br>");
-        out.print(AnalisServlet.dataJ.disc.get(AnalisServlet.maxPriceSSD("jast")));
+        //out.print("<br>Описание<br>");
+        //out.print(AnalisServlet.dataJ.disc.get(AnalisServlet.maxPriceSSD("jast")));
         out.print("<br>");
         //срежднее
         out.print("<hr>Средняя цена на SSD<br>");

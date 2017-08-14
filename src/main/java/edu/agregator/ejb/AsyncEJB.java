@@ -1,6 +1,6 @@
 package edu.agregator.ejb;
 
-import static edu.agregator.ejb.EJBConstant.BEAN_NAME;
+import static edu.agregator.ejb.EJBConstant.BEAN_NAME;//импорт
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Spider;
@@ -15,7 +15,7 @@ import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 
-@Stateless(name=BEAN_NAME)
+@Stateless(name=BEAN_NAME) //имя
 @LocalBean
 public class AsyncEJB {
     public DataSource dataS=new DataSource();
@@ -207,19 +207,19 @@ public class AsyncEJB {
         disc.add("скорость чтение 500");disc.add("скорость запси 500");disc.add("скорость интерфейса 6гб");
 
         try (FileWriter writer = new FileWriter("C:\\Users\\1\\Documents\\names.txt", true)) {
-            writer.write(String.valueOf(names).substring(1, String.valueOf(names).length() - 1));
+            writer.write(String.valueOf(names).substring(1, String.valueOf(names).length() - 1)+",");
             writer.close();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         try (FileWriter writer = new FileWriter("C:\\Users\\1\\Documents\\price.txt", true)) {
-            writer.write(String.valueOf(price).substring(1, String.valueOf(price).length() - 1));
+            writer.write(String.valueOf(price).substring(1, String.valueOf(price).length() - 1)+",");
             writer.close();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         try (FileWriter writer = new FileWriter("C:\\Users\\1\\Documents\\disc.txt", true)) {
-            writer.write(String.valueOf(disc).substring(1, String.valueOf(disc).length() - 1));
+            writer.write(String.valueOf(disc).substring(1, String.valueOf(disc).length() - 1)+",");
             writer.close();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -316,19 +316,24 @@ public class AsyncEJB {
     //средняя стоимость на ssd
     public long midPriceSSD(String shop){
         int k=0; //индекс мин цены
+        int l=0;
         long midPrice = 0; //мин цена
         if (shop.equals("citi")) {
             for (int i = 0; i < dataS.price.size()-1; i++) {
                 if(dataS.name.get(i).contains("SSD") & (dataS.name.get(i).contains("Гб") | dataS.name.get(i).contains("Gb"))){
-                midPrice+=dataS.price.get(i);}
+                midPrice+=dataS.price.get(i);
+                l++;}
             }
+            midPrice=midPrice/l;
         }
         else if(shop.equals("jast"))
         {
             for (int i = 0; i < dataJ.price.size()-1; i++) {
                 if(dataJ.name.get(i).contains("SSD") & (dataJ.name.get(i).contains("Гб") | dataJ.name.get(i).contains("Gb"))){
-                midPrice+=dataJ.price.get(i);}
+                midPrice+=dataJ.price.get(i);
+                    l++;}
             }
+            midPrice=midPrice/l;
         }
         return midPrice;
     }
